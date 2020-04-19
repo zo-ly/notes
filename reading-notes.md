@@ -55,3 +55,67 @@
   3. **外部函数的**
 
 - 闭包的缺点，常驻内存，内存消耗对脚本性能产生负面影响
+
+# 第五章 数组的函数式编程
+
+- 把函数应用于一个值并创建一个新值的过程称为投影（不改变自身而产生新值）
+- 设置累加器并遍历数组以生成一个单一元素的过程称为归约数组，重复该过程称为归约操作
+- 投影函数 `map` `filter` `concat` `reduce` `zip`，让使用数组变得简单，理解这些函数的运行机制有助于对函数式有更加深入的思考
+
+```js
+const map = (array, fn) => {
+  let results = [];
+  for (let value of array) {
+    results.push(fn(value));
+  }
+  return results;
+}
+
+const filter = (array, fn) => {
+  let results = [];
+  for (let value of array) {
+    fn(value) && results.push(value);
+  }
+  return results;
+}
+
+const concatAll = (array) => {
+  let results = [];
+  for(let value of array) {
+    results.push.apply(results, Array.isArray(value) ? value : [value]);
+  }
+  return results;
+}
+
+const reduce = (array, fn, initValue) => {
+  let acc = array[0];
+  if (initValue !== undefined) {
+    acc = initValue;
+    for (const value of array) {
+      acc = fn(acc, value);
+    }
+  } else {
+    for(let i = 1;i < array.length;i++) {
+      acc = fn(acc, array[i]);
+    }
+  }
+  return acc;
+}
+
+const zip = (leftArr, rightArr, fn) => {
+  let results = [];
+  const maxLen = Math.min(leftArr.length, rightArr.length);
+  for (let i = 0;i < maxLen;i++) {
+    results.push(fn(leftArr[i], rightArr[i]));
+  }
+  return results;
+}
+
+const arrayUtils = {
+  map,
+  zip,
+  filter,
+  reduce,
+  concatAll
+};
+```
