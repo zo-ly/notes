@@ -119,3 +119,64 @@ const arrayUtils = {
   concatAll
 };
 ```
+
+# 第六章 柯里化与偏应用
+
+- 柯里化就是把一个多参数函数转换为一个嵌套的一元函数的过程
+  - 只接受一个参数的函数称为一元函数，接受两个参数的函数称为二元函数，接受n个参数的函数称为n元函数
+  - 接受可变数量的参数称为变参函数，通过`arguments`可捕获该函数的额外参数
+  - es6的扩展运算符，更简洁、更清晰的表示一个函数接受可变的参数
+
+- 柯里化函数有助于移除很多函数中的样板代码（boilerplate code，几乎不变的、重复的代码）
+
+`arguments` 是一个类数组对象，是所有（非箭头）函数中都可用的局部变量
+```js
+// 类数组对象
+var my_object = {
+  '0': 'zero',
+  '1': 'one',
+  '2': 'two',
+  '3': 'three',
+  '4': 'four',
+  length: 5
+};
+```
+
+`Array.prototype.slice.call(arguments)` 将 `arguments` 转换为一个真正的数组 [原理](https://stackoverflow.com/questions/7056925/how-does-array-prototype-slice-call-work)
+```js
+const curry = (fn) => {
+  if (typeof fn !== 'function') {
+    throw Error('no function provided');
+  }
+  return function curried(...args) {
+    if (args.length < fn.length) {
+      return function () {
+        return curried.apply(null, args.concat([].slice.call(arguments)));
+      };
+    }
+    return fn(...args);
+  }
+}
+```
+
+- 偏函数的应用称为偏应用
+- 柯里化和偏函数都是将多参函数转换为接受更少参数函数的方法，区别在于
+  - 柯里化是将函数转换为多个嵌套的一元函数
+  - 偏函数可以接受不只一个参数，它被固定了部分参数作为预设，并可以接受剩余的参数
+
+```js
+const partial = (fn, ...partialArgs) => {
+  return function (extraArg) {
+    let args = [].concat(partialArgs);
+    for (let i = 0;i < args.length;i++) {
+      if (args[i] === undefined) {
+        args[i] = extraArg;
+      }
+    }
+    return fn.apply(null, args);
+  };
+}
+```
+
+- 我们需要 `curry` 或者 `partial`, 但并不是同时需要
+- 柯里化和偏应用一直是函数式编程的工具，该用 `curry` 还是 `partial` 应该视情况而定，取决于具体场景
