@@ -142,7 +142,7 @@ var my_object = {
 };
 ```
 
-`Array.prototype.slice.call(arguments)` 将 `arguments` 转换为一个真正的数组 [原理](https://stackoverflow.com/questions/7056925/how-does-array-prototype-slice-call-work)
+`Array.prototype.slice.call(arguments)` 将 `arguments` 转换为一个真正的数组 [参考](https://stackoverflow.com/questions/7056925/how-does-array-prototype-slice-call-work)
 ```js
 const curry = (fn) => {
   if (typeof fn !== 'function') {
@@ -180,3 +180,31 @@ const partial = (fn, ...partialArgs) => {
 
 - 我们需要 `curry` 或者 `partial`, 但并不是同时需要
 - 柯里化和偏应用一直是函数式编程的工具，该用 `curry` 还是 `partial` 应该视情况而定，取决于具体场景
+
+# 第七章 组合与管道
+
+Unix的一些理念
+  - 每个程序只做好一件事情
+  - 重新构建要好于在复杂的旧程序中添加“新属性”
+  - 每个程序的输出应该是另外一个尚未可知的程序的输入
+
+组合与管道
+  - 无需创建新的函数就可以通过基础函数解决问题
+  - 小函数 组合为 大函数，简单的函数容易阅读、测试和维护
+  - 组合与管道做相同的事情，只是数据流方向不同而已
+  - 从左至右处理数据流的过程称为管道（pipeline）或序列（sequence）
+
+小巧的 `compose` 或 `pipe` 用处很大，能够让开发者通过定义良好的小函数按需组合成复杂的函数
+
+```js
+const compose = (...fns) =>
+  (value) => fns.reverse().reduce((pre, current) => current(pre), value);
+
+const pipe = (...fns) =>
+  (value) => fns.reduce((pre, current) => current(pre), value);
+
+const identity = (it) => {
+  console.log('[debug]', it);
+  return it;
+}
+```
