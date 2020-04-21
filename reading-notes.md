@@ -1,8 +1,17 @@
 # 第一章 函数式编程简介
 
-*命令式编程范式*(指令式编程): 让机器按照规定的命令执行下去
+### 一些编程范式
+*命令式编程范式*(imperative)): 让机器按照规定的命令执行下去，即一步一步告诉计算机先做什么在做什么
 
-函数式编程是一种编程范式，以此可以创建仅依赖输入就可以完成自身逻辑的函数
+*声明式编程*(declarative)：是以数据结构的形式来表达程序执行的逻辑。它的主要思想是告诉计算机应该做什么，但不指定具体要怎么做。
+
+*函数式编程*(functional)最重要的特点是“函数第一位”，即函数可以出现在任何地方，把函数作为参数传递给另一个函数，不仅如此你还可以将函数作为返回值。
+
+### 函数式编程
+
+创建仅依赖输入就可以完成自身逻辑的函数
+
+函数式编程和声明式编程是有所关联的，因为他们思想是一致的：即只关注做什么而不是怎么做。但函数式编程不仅仅局限于声明式编程。
 
 - 函数式编程的好处
   - 大多说函数式编程的好处来自于纯函数
@@ -207,4 +216,88 @@ const identity = (it) => {
   console.log('[debug]', it);
   return it;
 }
+```
+
+# 第八章 函子(Functor)
+
+用一种纯函数式的方式帮助我们处理错误
+
+函子是一个实现了map契约的对象，在遍历每个对象值得时候生成一个新的对象
+
+- 函子是一个持有值的容器
+- 函子实现了map方法（单纯的持有值是几乎没有应用场景的）
+- Pointed函子是一个函子的子集，它具有实现了`of`契约的接口
+
+```js
+const Container = function(val) {
+  this.value = val
+}
+
+Container.of = function(val) {
+  return new Container(val)
+}
+
+Container.prototype.map = function(fn) {
+  return Container.of(fn(this.value))
+}
+```
+
+实现map函数的方式提供了不同类型的函子
+
+```js
+/*
+  MayBe函子
+  1. 避免麻烦的 null 或 undefined 检查
+  2. 所有map函数都会被调用
+*/
+const MayBe = function(val) {
+  this.value = val;
+}
+
+MayBe.of = function(val) {
+  return new MayBe(val);
+}
+
+MayBe.prototype.isNothing = function() {
+  return !this.value
+}
+
+MayBe.prototype.map = function(fn) {
+  return this.isNothing() ? MayBe.of(null) : MayBe.of(fn(this.value));
+}
+
+const splitStr = (str) => str.split(' ');
+MayBe.of(null).map(splitStr).map(splitStr);
+
+/*
+  Either函子
+  确定报错原因，以便分析问题
+*/
+const Nothing = function(val) {
+  this.value = val;
+}
+Nothing.of = function(val) {
+  return new Nothing(val);
+}
+Nothing.prototype.map = function(fn) {
+  return this;
+}
+
+const Some = function(val) {
+  this.value = val;
+}
+Some.of = function(val) {
+  return new Some(val);
+}
+Some.prototype.map = function(fn) {
+  return Some.of(fn(this.value));
+}
+
+let Either;
+try {
+  Either = Some.of(/*sth.*/)
+} catch {
+  Either = Nothing.of(/*err msg*/)
+}
+Either.map(/*do sth.*/).map(/*do sth.*/)
 ```
