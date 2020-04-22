@@ -301,3 +301,21 @@ try {
 }
 Either.map(/*do sth.*/).map(/*do sth.*/)
 ```
+
+# 第九章 深入理解 Monad
+
+Monad有助于扁平化 `MayBe`数据
+
+- Monad就是一个含有 `chain` 方法的函子
+
+```js
+MayBe.prototype.join = function() {
+  return this.isNothing() ? MayBe.of(null) : this.value;
+}
+
+MayBe.prototype.chain = function(fn) {
+  return this.map(fn).join()
+}
+```
+
+Monad和函子(Functor)是函数式领域的概念，如果需要深入理解，可研读《[Scala函数式编程](https://book.douban.com/subject/26772149/)》
