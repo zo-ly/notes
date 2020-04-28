@@ -319,3 +319,15 @@ MayBe.prototype.chain = function(fn) {
 ```
 
 Monad和函子(Functor)是函数式领域的概念，如果需要深入理解，可研读《[Scala函数式编程](https://book.douban.com/subject/26772149/)》
+
+# 第十章 使用 Generator
+
+书中使用 Generator 主要是用来解决 JavaScript 中的异步回调问题
+
+- 同步：函数在执行时会阻塞调用者，并在执行完毕后返回结果
+- 异步：函数在执行时不会阻塞调用者，一旦执行完毕就会返回结果
+- 惰性求值：代码直到调用时才会执行
+- Generator 是 ES6 规范的一部分，被捆绑在语言层面
+  - 不能无限制地调用 `next` 从 Generator 中取值，Generator 如同序列，一旦序列中的值被消费，就不能再次消费它
+  - `yield` 使 Generator 函数暂停了执行并将结果返回给调用者
+  - `done` 是一个判断 Generator 序列是否已被完全消费的属性
