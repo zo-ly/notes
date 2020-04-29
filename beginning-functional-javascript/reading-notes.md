@@ -39,8 +39,7 @@
 > 在编程语言中，一等公民可以作为函数参数，可以作为函数返回值，也可以赋值给变量。  
 > In general, a value in a programming language is said to have ﬁrst-class status if it can be passed as a parameter, returned from a subroutine, or assigned into a variable.  
 --《[Programming Language Pragmatics](https://www.cs.rochester.edu/~scott/pragmatics/)》
-
-
+>
 >函数作为一等公民是函数式编程的必要条件，高阶函数(higher-order functions)，就是使用函数作为参数的函数，它在函数式编程中很常见  
 >First-class functions are a necessity for the functional programming style, in which the use of higher-order functions is a standard practice.  
 --[wikipedia](https://en.wikipedia.org/wiki/First-class_function)
@@ -139,6 +138,7 @@ const arrayUtils = {
 - 柯里化函数有助于移除很多函数中的样板代码（boilerplate code，几乎不变的、重复的代码）
 
 `arguments` 是一个类数组对象，是所有（非箭头）函数中都可用的局部变量
+
 ```js
 // 类数组对象
 var my_object = {
@@ -152,6 +152,7 @@ var my_object = {
 ```
 
 `Array.prototype.slice.call(arguments)` 将 `arguments` 转换为一个真正的数组 [参考](https://stackoverflow.com/questions/7056925/how-does-array-prototype-slice-call-work)
+
 ```js
 const curry = (fn) => {
   if (typeof fn !== 'function') {
@@ -193,15 +194,17 @@ const partial = (fn, ...partialArgs) => {
 # 第七章 组合与管道
 
 Unix的一些理念
-  - 每个程序只做好一件事情
-  - 重新构建要好于在复杂的旧程序中添加“新属性”
-  - 每个程序的输出应该是另外一个尚未可知的程序的输入
+
+- 每个程序只做好一件事情
+- 重新构建要好于在复杂的旧程序中添加“新属性”
+- 每个程序的输出应该是另外一个尚未可知的程序的输入
 
 组合与管道
-  - 无需创建新的函数就可以通过基础函数解决问题
-  - 小函数 组合为 大函数，简单的函数容易阅读、测试和维护
-  - 组合与管道做相同的事情，只是数据流方向不同而已
-  - 从左至右处理数据流的过程称为管道（pipeline）或序列（sequence）
+
+- 无需创建新的函数就可以通过基础函数解决问题
+- 小函数 组合为 大函数，简单的函数容易阅读、测试和维护
+- 组合与管道做相同的事情，只是数据流方向不同而已
+- 从左至右处理数据流的过程称为管道（pipeline）或序列（sequence）
 
 小巧的 `compose` 或 `pipe` 用处很大，能够让开发者通过定义良好的小函数按需组合成复杂的函数
 
