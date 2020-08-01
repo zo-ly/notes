@@ -1,7 +1,8 @@
-# 一些笔记
+> 一些笔记
 
-### 《函数式编程入门经典》
+- [《函数式编程入门经典》](./beginning-functional-javascript)
 
-### Vimtutor
+- [Vimtutor](./vimtutor)
 
-### 《深入解析CSS》
+- [《深入解析CSS》](css-in-depth)
+
