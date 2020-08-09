@@ -1,5 +1,5 @@
 ---
-description: 一点记录
+description: 一些摘要，方便回顾
 ---
 
 # 函数式编程入门经典
