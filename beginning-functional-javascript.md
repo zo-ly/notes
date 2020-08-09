@@ -1,5 +1,5 @@
 ---
-description: 一点读书笔记
+description: 一点记录
 ---
 
 # 函数式编程入门经典
