@@ -1,3 +1,9 @@
+---
+description: 过了一下文档，做了一点总结
+---
+
+# Babel 浅入浅出
+
 ## Babel 的安装
 
 ```shell
@@ -181,3 +187,7 @@ Babel 一系列的包都以`@babel`开头，是 npm 包的一种形式，@符号
 
 Browserslist 和 Babel 的结合，与 eslint/stylelint 的结合
 
+## 参考
+
+- [1] [Babel Docs](https://babeljs.io/docs/en/)
+- [2] [大佬的 Blog](https://blog.liuyunzhuge.com/categories/Javascript/babel/)
