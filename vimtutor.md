@@ -33,9 +33,9 @@ description: vim 小结 熟能生巧吧
    * **motion**  动作，代表在所操作的文本上的移动，例如 w 代表单词\(word\)，$ 代表行末等等
 
 6. 欲移动光标到行首，请按数字0键：**0**
-7. 欲撤消以前的操作，请输入：**u \(小写的u\)**  
+7. 欲撤消以前的操作，请输入：**u \(小写的u\)**
 
-   欲撤消在一行中所做的改动，请输入：**U \(大写的U\)**  
+   欲撤消在一行中所做的改动，请输入：**U \(大写的U\)**
 
    欲撤消以前的撤消命令，恢复以前的操作结果，请输入：**CTRL-R**
 
@@ -78,12 +78,79 @@ description: vim 小结 熟能生巧吧
 ### 第七讲小结
 
 1. **:help** 打开帮助窗口
-2. 创建一个 vimrc 保存偏好设置
+2. 创建一个 .vimrc 保存偏好设置
 3. 插入模式下**CTRL + d** 或 /TAB/ 可以进行命令自动补全
+
+一些基本的 vim 配置
+
+```vim
+" --- ~/.vimrc ---
+set number
+set ignorecase smartcase
+set smartindent
+set tabstop=2
+set expandtab
+set shiftwidth=2
+
+nnoremap ,p "0p
+nnoremap ,P "0P
+```
 
 ### 其他
 
-* **H** 页首 **L** 页尾
+* **H** 窗口头部 **M** 窗口中部 **L** 窗口尾部
 * **J** 将当前行与下一行链接在一起 **K** 查询光标下单词的手册页解释
 * **w** 下一个单词的开头 **e** 下一个单词的结尾 **b** 上一个单词的开头
+* 可视模式 `o` 指令
 
+  ```text
+   v         逐字符可视模式
+   V         逐行可视模式
+   Ctrl-v    逐块可视模式
+  ```
+
+* **Text Objects**
+
+  ```text
+   w     一个单词
+   p     一个段落
+   s     一个句子
+   (或)  一对()
+   {或}  一对{}
+   [或]  一对[]
+   <或>  一对<>
+   t     XML标签
+   "     一对""
+   '     一对''
+   `     一对``
+  ```
+
+* 也可以使用 NeoVim
+
+  一些常用的 NeoVim 配置
+
+   ```vim
+   " --- ~/.config/nvim/init.vim ---
+   " Vim-Plug
+   call plug#begin()
+   " Editor theme
+   Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+   " Highlight difference modes
+   Plug 'itchyny/lightline.vim'
+   " Go to definition
+   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+   call plug#end()
+
+   " Vim Script
+   colorscheme tokyonight
+
+   " COC key map
+   nmap <silent> gd <Plug>(coc-definition)
+   nmap <silent> gD <Plug>(coc-implementation)
+   nmap <silent> gr <Plug>(coc-references)
+
+   " Use config from .vimrc
+   set runtimepath^=~/.vim runtimepath+=~/.vim/after
+   let &packpath = &runtimepath
+   source ~/.vimrc
+   ```
