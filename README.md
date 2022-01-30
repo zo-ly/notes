@@ -1,4 +1,6 @@
-# 我的笔记
+# My Notes
+
+## POSTS
 
 * [Babel 浅入浅出](learn-babel.md)
 * [图解 HTTP](http-basics.md)
