@@ -1,6 +1,6 @@
 # SUMMARY
 
-* [My Notes](README.md)
+* [Table Of Contents](README.md)
 
 ## POSTS
 
