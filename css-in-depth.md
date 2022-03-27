@@ -4,13 +4,13 @@ description: 略读了一些章节
 
 # CSS in Depth
 
-### 相对单位
+## 相对单位
 
-像素\(px\)是绝对单位，即 5px 放哪都一样大  
-不常用的绝对单位是mm（毫米）、cm（厘米）、in（英寸）、pt（点，印刷术语，1/72英寸）、pc（派卡，印刷术语，12点）  
+像素\(px\)是绝对单位，即 5px 放哪都一样大
+不常用的绝对单位是mm（毫米）、cm（厘米）、in（英寸）、pt（点，印刷术语，1/72英寸）、pc（派卡，印刷术语，12点）
 这些单位都可以通过公式互相换算：1in = 25.4mm = 2.54cm = 6pc = 72pt = 96px
 
-CSS单位会根据浏览器、操作系统或者硬件适当缩放  
+CSS单位会根据浏览器、操作系统或者硬件适当缩放
 像素是一个具有误导性的名称，CSS像素并不严格等于显示器的像素
 
 em 和 rem 是相对单位，它们会根据作用到的元素而变化
@@ -21,13 +21,13 @@ em 和 rem 是相对单位，它们会根据作用到的元素而变化
 
 结合伪类 `:root` 以及 rem / vw，不用媒体查询也能让整个网页响应式缩放
 
-### 理解浮动
+## 理解浮动
 
 flexbox的行为很直观，可预测性更好，浮动的学习显得有些没有必要，除非在开发中需要兼容IE系浏览器\(IE10 支持部分lexbox属性\)或者维护旧代码库。
 
 让文字围绕图片的效果，浮动仍然是唯一的办法，这恰恰也是浮动的设计初衷。
 
-### Flexbox
+## Flexbox
 
 Flexible Box Layout
 
@@ -54,23 +54,23 @@ flex-shrink 是处理溢出宽度的属性，值为非负整数，为 0 则表�
 
 [Flexbugs](https://github.com/philipwalton/flexbugs) 该项目维护了所有已知的flexbox的浏览器兼容性问题，并在大部分情况下给出了解决方案
 
-### 响应式设计
+## 响应式设计
 
-给视口添加 [meta标签](https://developer.mozilla.org/zh-CN/docs/Mobile/Viewport_meta_tag)  
+给视口添加 [meta标签](https://developer.mozilla.org/zh-CN/docs/Mobile/Viewport_meta_tag)
 meta 标签的 content 属性里包含两个选项 1. 它告诉浏览器当解析CSS时将设备的宽度作为假定宽度，而不是一个全屏的桌面浏览器的宽度 2. 当页面加载时，它使用initial-scale将缩放比设置为100%。
 
-```markup
+```html
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 ```
 
-优先实现移动端设计  
-使用媒体查询，按照视口从小到大的顺序渐进增强网页  
-使用**流式布局**（容器随视口宽度而变化）适应任意浏览器尺寸  
+优先实现移动端设计
+使用媒体查询，按照视口从小到大的顺序渐进增强网页
+使用**流式布局**（容器随视口宽度而变化）适应任意浏览器尺寸
 使用[响应式图片](https://jakearchibald.com/2015/anatomy-of-responsive-images/)适应移动设备的带宽限制
 
-```markup
+```html
 <!-- 设置src属性兼容不支持srcset属性的浏览器 -->
 <!-- srcset根据浏览器宽度的不同加载不同图片 -->
 <img
@@ -84,7 +84,7 @@ meta 标签的 content 属性里包含两个选项 1. 它告诉浏览器当解�
 />
 ```
 
-### 模块化CSS
+## 模块化CSS
 
 每个模块都需要有一个独一无二的类名，如`message`，以该类名开头创建的新类名称为修饰符，如`message-error`
 
@@ -116,4 +116,3 @@ meta 标签的 content 属性里包含两个选项 1. 它告诉浏览器当解�
   display: none !important;
 }
 ```
-

@@ -336,4 +336,3 @@ Monad和函子\(Functor\)是函数式领域的概念，如果需要深入理解�
   * 不能无限制地调用 `next` 从 Generator 中取值，Generator 如同序列，一旦序列中的值被消费，就不能再次消费它
   * `yield` 使 Generator 函数暂停了执行并将结果返回给调用者
   * `done` 是一个判断 Generator 序列是否已被完全消费的属性
-
