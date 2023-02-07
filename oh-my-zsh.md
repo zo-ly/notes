@@ -2,21 +2,25 @@
 description: oh-my-zsh 配置 自用
 ---
 
-# oh-my-zsh
+# Mackup
 
-## 插件
+找到了一个好工具 [mackup](https://github.com/lra/mackup) 🚀，可以用来同步自己各种应用的配置，所以 `dotFiles` 都可以同步到 [Github 仓库](https://github.com/zo-ly/mackup_cfg) 啦 🎉
 
-- zsh-autojump
-- zsh-syntax-highlighting
-- zsh-autosuggestions
+# ~~oh-my-zsh~~
+
+## ~~插件~~
+
+- ~~zsh-autojump~~
+- ~~zsh-syntax-highlighting~~
+- ~~zsh-autosuggestions~~
 
   ```zsh
   bindkey '^I' autosuggest-accept
   ```
 
-## Git
+## ~~Git~~
 
-### diff-so-fancy
+### ~~diff-so-fancy~~
 
 ```yaml
 [alias]
@@ -46,9 +50,9 @@ description: oh-my-zsh 配置 自用
   whitespace = red reverse
 ```
 
-## 主题
+## ~~主题~~
 
-### [Spaceship](https://spaceship-prompt.sh/getting-started/)
+### ~~[Spaceship](https://spaceship-prompt.sh/getting-started/)~~
 
 ```zsh
 ZSH_THEME="spaceship"
