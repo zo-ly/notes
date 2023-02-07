@@ -4,7 +4,7 @@ description: oh-my-zsh 配置 自用
 
 # Mackup
 
-找到了一个好工具 [mackup](https://github.com/lra/mackup) 🚀，可以用来同步自己各种应用的配置，所以 `dotFiles` 都可以同步到 [Github 仓库](https://github.com/zo-ly/mackup_cfg) 啦 🎉
+找到了一个好工具 [Mackup](https://github.com/lra/mackup) 🚀，可以用来同步自己各种应用的配置，所以 `dotFiles` 都可以同步到 [Github 仓库](https://github.com/zo-ly/mackup_cfg) 啦 🎉
 
 # ~~oh-my-zsh~~
 
