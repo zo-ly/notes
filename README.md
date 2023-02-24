@@ -1,5 +1,7 @@
 # Table Of Contents
 
+{% @linear/embed url="https://linear.app/zoly" %}
+
 ## POSTS
 
 * [Babel 浅入浅出](learn-babel.md)
