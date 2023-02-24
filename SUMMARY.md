@@ -10,7 +10,3 @@
 * [CSS in Depth](css-in-depth.md)
 * [VIMTUTOR](vimtutor.md)
 * [Oh My Zsh](oh-my-zsh.md)
-
-## ISSUES
-
-* [Welcome](issues/welcome.md)
