@@ -1,6 +1,6 @@
 # Table Of Contents
 
-{% @linear/embed url="https://linear.app/zoly" %}
+{% @linear/embed url="https://linear.app/zoly/issue/NOT-11/test" issueId="NOT-11" %}
 
 ## POSTS
 
@@ -10,3 +10,4 @@
 * [CSS in Depth](css-in-depth.md)
 * [VIMTUTOR](vimtutor.md)
 * [Oh My Zsh](oh-my-zsh.md)
+
