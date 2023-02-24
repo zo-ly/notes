@@ -6,50 +6,50 @@ description: 网络基础
 
 ## 第一章
 
-- 三次握手，关键词：高效、可靠
-- tcp/ip协议分层，链路层/网络层(ip)/传输层(tcp)/应用层
-- ip 是一种协议，和ip地址做区分
+* 三次握手，关键词：高效、可靠
+* tcp/ip协议分层，链路层/网络层(ip)/传输层(tcp)/应用层
+* ip 是一种协议，和ip地址做区分
 
 ## 第二章
 
-- 持久连接：只要任意一端没有提出断开连接，就会一直保持TCP连接状态
-- Cookie技术通过在request和response的报文中写入信息来控制客户端的状态
+* 持久连接：只要任意一端没有提出断开连接，就会一直保持TCP连接状态
+* Cookie技术通过在request和response的报文中写入信息来控制客户端的状态
 
 ## 第三章
 
 **内容编码** 指明应用在实体内容上的编码格式，并保持实体信息原样的压缩。常用的内容编码有以下几种：
 
-- gzip（GUN zip）
-- compress（UNIX 系统的标准压缩）
-- deflate（zlib）
-- identity（不进行编码）
+* gzip（GUN zip）
+* compress（UNIX 系统的标准压缩）
+* deflate（zlib）
+* identity（不进行编码）
 
 ## 第四章
 
-| code |     类别      |          原因短语          |
-| :--: | :-----------: | :------------------------: |
-| 1XX  | Informational |     接受的请求正在处理     |
-| 2XX  |    Success    |      请求正常处理完毕      |
-| 3XX  |  Redirection  | 需要进行附加操作以完成请求 |
-| 4XX  | Client Error  |     服务器无法处理请求     |
-| 5XX  | Server Error  |      服务处理请求出错      |
+| code |       类别      |      原因短语     |
+| :--: | :-----------: | :-----------: |
+|  1XX | Informational |   接受的请求正在处理   |
+|  2XX |    Success    |    请求正常处理完毕   |
+|  3XX |  Redirection  | 需要进行附加操作以完成请求 |
+|  4XX |  Client Error |   服务器无法处理请求   |
+|  5XX |  Server Error |    服务处理请求出错   |
 
-- `204 No Content` 请求处理成功，但没有资源可返回
-- `206 Partial Content` 范围请求处理成功
-- `301 Moved Permanently` 永久性重定向
-- `302 Found` 临时性重定向
-- `304 Not Modified` 未满足*附带条件的请求*（GET 方法请求报文中包含 If-Match/If-Modified-Since/If-None-Math/If-Range/If-Unmodified-Since）；服务器资源未改变，可直接使用客户端未过期的缓存
-- `400 Bad Request`  请求报文语法错误
-- `401 Unauthorized` 请求需要通过某些认证
-- `403 Forbidden` 请求不允许访问
-- 500 Internal Server Error 服务器故障
-- `503  Service Unavailable` 服务器超负载或者停机维护
+* `204 No Content` 请求处理成功，但没有资源可返回
+* `206 Partial Content` 范围请求处理成功
+* `301 Moved Permanently` 永久性重定向
+* `302 Found` 临时性重定向
+* `304 Not Modified` 未满足_附带条件的请求_（GET 方法请求报文中包含 If-Match/If-Modified-Since/If-None-Math/If-Range/If-Unmodified-Since）；服务器资源未改变，可直接使用客户端未过期的缓存
+* `400 Bad Request` 请求报文语法错误
+* `401 Unauthorized` 请求需要通过某些认证
+* `403 Forbidden` 请求不允许访问
+* 500 Internal Server Error 服务器故障
+* `503 Service Unavailable` 服务器超负载或者停机维护
 
 ## 第五章
 
-- 利用 *虚拟主机* 可以在一台服务器上搭建多个Web站点，发送HTTP请求时Host首部需指定域名的URI
-- 一些用于通信数据的转发程序配合服务器工作：**代理、网关、隧道**
-- 代理服务和客户端本地磁盘都可以保存资源副本用以缓存
+* 利用 _虚拟主机_ 可以在一台服务器上搭建多个Web站点，发送HTTP请求时Host首部需指定域名的URI
+* 一些用于通信数据的转发程序配合服务器工作：**代理、网关、隧道**
+* 代理服务和客户端本地磁盘都可以保存资源副本用以缓存
 
 > 使用**代理**的目的：
 >
@@ -66,57 +66,52 @@ description: 网络基础
 
 ### 通用首部字段
 
-- cache-control
-  - no-cache —— 不缓存过期的资源，缓存会向源服务器确认有效期后处理资源
-  - no-store —— 不使用缓存
-- connection
-  - [不再转发的首部字段名] —— 可控制不再转发的首部字段名
-  - Keep-Alive —— 持久连接，HTTP/1.1 默认值
-  - close —— 服务器端明确想断开连接
+* cache-control
+  * no-cache —— 不缓存过期的资源，缓存会向源服务器确认有效期后处理资源
+  * no-store —— 不使用缓存
+* connection
+  * \[不再转发的首部字段名] —— 可控制不再转发的首部字段名
+  * Keep-Alive —— 持久连接，HTTP/1.1 默认值
+  * close —— 服务器端明确想断开连接
 
 ### 请求时的首部字段
 
-- referer 原始请求URI。客户端一般会带上这个字段请求服务器，但是当在浏览器地址栏直接访问时，出于安全考虑会省略
+* referer 原始请求URI。客户端一般会带上这个字段请求服务器，但是当在浏览器地址栏直接访问时，出于安全考虑会省略
+* 对请求内容的一些补充
+  * accept 支持的媒体类型 （text/html，application/json）
+  * accept-charset 支持的字符集 （unicode-1-1）
+  * accept-encoding 支持的内容编码 （gzip）
+  * accept-language 支持的自然语言集 （zh-cn）
+*   附带条件的请求
 
-- 对请求内容的一些补充
-
-  - accept 支持的媒体类型 （text/html，application/json）
-  - accept-charset 支持的字符集 （unicode-1-1）
-  - accept-encoding 支持的内容编码 （gzip）
-  - accept-language 支持的自然语言集 （zh-cn）
-
-- 附带条件的请求
-
-  |     携带字段      | 满足条件的返回 | 不满足条件的返回 |
-  | :---------------: | :------------: | :--------------: |
-  | if-match(`ETag`)  |      200       |       412        |
-  | if-modified-since |      200       |       304        |
-  | if-range(`ETag`)  |      206       |       200        |
+    |        携带字段       | 满足条件的返回 | 不满足条件的返回 |
+    | :---------------: | :-----: | :------: |
+    |  if-match(`ETag`) |   200   |    412   |
+    | if-modified-since |   200   |    304   |
+    |  if-range(`ETag`) |   206   |    200   |
 
 ### 响应时的首部字段
 
-- `ETag`值是资源被缓存时分配的身份标识，其生成算法没有统一规则，仅与服务器有关
-- expires 未过期的情况下
-
-  - 浏览器将直接从缓存中读取，不会发送http请求
-  - 缓存服务器将返回缓存，不请求源服务器
-- last-modified 浏览器发送下一次请求相同资源时，会带上 if-modified-since 的 request header
-- location 几乎所有的浏览器在接收到带有location的响应后，都会强制性的跳转访问
-- vary 源服务器对代理服务器缓存的使用进行控制，如 `Vary: Accept-Encoding` 第一次请求accept-encoding =gzip，第二次如果也是 gzip 请求则使用代理服务器缓存
-- 对返回内容的一些补充
-
-  - content-type（text/html，application/json）
-  - content-language
-  - content-length
-- content-encoding 告知客户端资源返回的编码格式
+* `ETag`值是资源被缓存时分配的身份标识，其生成算法没有统一规则，仅与服务器有关
+* expires 未过期的情况下
+  * 浏览器将直接从缓存中读取，不会发送http请求
+  * 缓存服务器将返回缓存，不请求源服务器
+* last-modified 浏览器发送下一次请求相同资源时，会带上 if-modified-since 的 request header
+* location 几乎所有的浏览器在接收到带有location的响应后，都会强制性的跳转访问
+* vary 源服务器对代理服务器缓存的使用进行控制，如 `Vary: Accept-Encoding` 第一次请求accept-encoding =gzip，第二次如果也是 gzip 请求则使用代理服务器缓存
+* 对返回内容的一些补充
+  * content-type（text/html，application/json）
+  * content-language
+  * content-length
+* content-encoding 告知客户端资源返回的编码格式
 
 ## 第七章
 
 ### HTTP的安全问题
 
-- 不验证通信方的身份，可能遭遇伪装
-- 通信使用明文，内容可能被窃听
-  - 通过 wireshark 等抓包工具可以查看到明文信息
+* 不验证通信方的身份，可能遭遇伪装
+* 通信使用明文，内容可能被窃听
+  * 通过 wireshark 等抓包工具可以查看到明文信息
 
 ### HTTPS
 
@@ -124,18 +119,18 @@ HTTPS 就是 HTTP 和 TCP 之间加入了 SSL 协议，HTTP 先和 SSL 通信，
 
 SSL 协议：在应用层和传输层之间对连接进行加密的通信协议
 
-- SSL 协议 1.0 和 2.0 版本存在问题已经废弃，目前 TLS协议 均以 SSL 3.0 为基准制定
+* SSL 协议 1.0 和 2.0 版本存在问题已经废弃，目前 TLS协议 均以 SSL 3.0 为基准制定
 
 HTTPS的安全通信机制：
 
 1. 客户端发起 SSL 通信请求
-   - 客户端也有客户端证书，比如网银会要求客户端安装证书才能登录访问，但是客户端证书只能证明客户端存在，不能证明用户的真实有效 性，有些鸡肋
+   * 客户端也有客户端证书，比如网银会要求客户端安装证书才能登录访问，但是客户端证书只能证明客户端存在，不能证明用户的真实有效 性，有些鸡肋
 2. 服务端返回证书和公钥
 3. 客户端根据内置的证书公钥验证证书合法性 —— 解决无法验证通信方身份的问题
-   - 浏览器发行商会预设一些权威证书机构的证书公钥
+   * 浏览器发行商会预设一些权威证书机构的证书公钥
 4. 客户端生成 pre-master-secret，通过服务器公钥加密后发送给服务器
-5. 服务器接收并通过私钥解密，获取 pre_master_secret
-6. 客户端和服务器生成 pre_master_secret -> master_secret -> 一些密钥（共享密钥）
+5. 服务器接收并通过私钥解密，获取 pre\_master\_secret
+6. 客户端和服务器生成 pre\_master\_secret -> master\_secret -> 一些密钥（共享密钥）
 7. 双方通过 HTTP 传输用共享密钥加密的信息 —— 解决通信使用明文的问题
 
 ## 第八章
@@ -147,46 +142,37 @@ SSL 客户端认证虽然具有高度的安全等级，但是导入操作以及�
 因为HTTP时无状态协议，目前 Web 登录认证多半基于表单认证：
 
 1. 客户端发送 身份ID 和 登录密码
+   *   如何保存登录密码等信息并没有标准化
 
-   - 如何保存登录密码等信息并没有标准化
-
-     > 一种安全的保存方法，给密码附加额外信息（加盐），再使用散列函数求出散列值后保存，这样能增加攻击者利用密码特征库破解的难度
-
+       > 一种安全的保存方法，给密码附加额外信息（加盐），再使用散列函数求出散列值后保存，这样能增加攻击者利用密码特征库破解的难度
 2. 服务器响应头返回 Set-Cookie
-
 3. 客户端请求头携带 Cookie 进行后续的用户操作，从而维持登录状态
 
 ## 第九章
 
 ### HTTP协议导致的性能瓶颈
 
-- 一条连接只能发送一个请求
-- 请求只能从客户端开始
-- 请求/响应首部信息不会压缩
-- 每次互相发送相同的首部信息造成浪费
-- 数据发送非强制压缩
+* 一条连接只能发送一个请求
+* 请求只能从客户端开始
+* 请求/响应首部信息不会压缩
+* 每次互相发送相同的首部信息造成浪费
+* 数据发送非强制压缩
 
 ### 基于HTTP追加的协议
 
-- HTTP / 2.0
+* HTTP / 2.0
+  *   多路复用流，通过单一的 TCP 连接，可以同时无限制地处理多个HTTP 请求
 
-  - 多路复用流，通过单一的 TCP 连接，可以同时无限制地处理多个HTTP 请求
+      > 多路复用代替了 HTTP1.x 的序列和阻塞机制，所有的**相同域名**请求都通过同一个TCP连接并发完成。
+      >
+      > 在 HTTP1.x 中，并发 N 个请求需要 N 个TCP连接，浏览器为了控制资源会有6-8个TCP连接都限制。
+  * 赋予请求优先级
+  * 压缩 HTTP 首部
+  * 推送功能，服务器可以主动向客户端推送数据
+* WebSocket：实现 WebSocket 通信，在 HTTP 连接建立后，需要完成一次握手。因为基于 HTTP，所以 WebSocket 请求由客户端发起，成功握手确认连接后，通信时使用的不再是 HTTP 的数据帧，而是 WebSocket 独立的数据帧。
+  * 推送功能
+  * 减少通信量，WebSocket 的首部信息很小
 
-    > 多路复用代替了 HTTP1.x 的序列和阻塞机制，所有的**相同域名**请求都通过同一个TCP连接并发完成。
-    >
-    > 在 HTTP1.x 中，并发 N 个请求需要 N 个TCP连接，浏览器为了控制资源会有6-8个TCP连接都限制。
-
-  - 赋予请求优先级
-
-  - 压缩 HTTP 首部
-
-  - 推送功能，服务器可以主动向客户端推送数据
-
-- WebSocket：实现 WebSocket 通信，在 HTTP 连接建立后，需要完成一次握手。因为基于 HTTP，所以 WebSocket 请求由客户端发起，成功握手确认连接后，通信时使用的不再是 HTTP 的数据帧，而是 WebSocket 独立的数据帧。
-
-  - 推送功能
-  - 减少通信量，WebSocket 的首部信息很小
-
-## 第十章 / 第十一章  构建 Web 内容的技术 / Web 的攻击技术
+## 第十章 / 第十一章 构建 Web 内容的技术 / Web 的攻击技术
 
 两个章节简单介绍了一些常用的 Web 应用开发技术和攻击手段，略读

@@ -13,4 +13,4 @@
 
 ## ISSUES
 
-* [Welcom](issues/welcom.md)
+* [Welcome](issues/welcome.md)
