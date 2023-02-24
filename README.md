@@ -1,7 +1,5 @@
 # Table Of Contents
 
-{% @linear/embed url="https://linear.app/zoly/issue/NOT-11/test" issueId="NOT-11" %}
-
 ## POSTS
 
 * [Babel 浅入浅出](learn-babel.md)
